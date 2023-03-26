@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { api } from "../../configs";
 
 function Signup(props) {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ function Signup(props) {
     const data = { email, password };
     console.log(data);
     axios
-      .post("https://cinecritique.cyclic.app/user/signin", data)
+      .post(api + "user/signin", data)
       .then((res) => {
         console.log(res.data);
         localStorage.setItem("userToken", res.data.token);

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { api } from "../../configs";
 
 function Signup(props) {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ function Signup(props) {
     const data = { name, email, password };
     console.log(data);
     axios
-      .post("https://cinecritique.cyclic.app/user/signup", data)
+      .post(api + "user/signup", data)
       .then((res) => {
         setLoading(false);
         console.log(res.data);

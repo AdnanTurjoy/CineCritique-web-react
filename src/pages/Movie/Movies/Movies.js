@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import headerImage from "../../../assets/img/Bitmap.png";
+import { api } from "../../../configs";
 function Movies(props) {
   const navigate = useNavigate();
   const { query } = useParams();
@@ -11,10 +12,11 @@ function Movies(props) {
     backgroundImage: `url("${headerImage}")`,
     backgroundSize: "cover",
   };
+
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://cinecritique.cyclic.app/movie/name/${query}`)
+      .get(api + `movie/name/${query}`)
       .then((res) => {
         // console.log(res.data.data.data.Error);
         if (res.data.data.data.Error === "Movie not found!") {
